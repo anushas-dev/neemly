@@ -2,8 +2,8 @@ import Link from "next/link";
 
 export async function getServerSideProps() {
   // Fetch data from API
-  const res = await fetch(`http://localhost:3000/api/tasks`);
-  const tasks = await res.json();
+  const response = await fetch(`http://localhost:3000/api/tasks`);
+  const tasks = await response.json();
 
   // Pass data to the page via props
   return { props: { tasks } };

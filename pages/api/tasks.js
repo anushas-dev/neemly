@@ -1,8 +1,17 @@
+import { tasks } from "../../data/tasks";
+
 export default function handler(req, res) {
-  res.status(200).json([
-    { name: "Buy Groceries", id: "21", time_taken: "1h", time_left: "2h" },
-    { name: "Clean Bookshelf", id: "42", time_taken: "2h", time_left: "0h" },
-    { name: "Watch Documentary", id: "73", time_taken: "4h", time_left: "1h" },
-    { name: "Complete Case Study", id: "24", time_taken: "3h", time_left: "2h" },
-  ]);
+  if (req.method === "GET") {
+    res.status(200).json(tasks);
+  } else if (req.method === "POST") {
+    const taskObj = {
+      id: Date.now(),
+      name: req.body.name,
+      time_taken: req.body.time_taken,
+      time_left: req.body.time_left,
+      description: req.body.description,
+    };
+    tasks.push(taskObj);
+    res.status(201).json({ _inserted: taskObj });
+  }
 }
