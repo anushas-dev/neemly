@@ -26,7 +26,7 @@ export default function ManageTask({ tasks }) {
         <tbody>
           {tasks.map((task) => (
             <tr scope="row">
-              <td key="{task}" href="/tasks/{task.id}">{task.id}</td>
+              <td key="{task}"><Link href={`/tasks/${task.id}`}>{task.id}</Link></td>
               <td>{task.name}</td>
               <td>{task.time_taken}</td>
               {task.time_left === '0h' && (
